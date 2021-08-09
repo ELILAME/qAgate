@@ -238,23 +238,6 @@ void QDispersion::plot(bool commandOnly)
     ConfigParser parser;
     parser.setSensitive(true);
     parser.setContent(command.toStdString());
-    try
-    {
-      ui->statusBar->showMessage(tr("Plot in progress"));
-      this->setCursor(Qt::WaitCursor);
-      Graph::plotBand(*_eigparser.get(),parser,ui->plot,save);
-      if (save == Graph::PRINT)
-      {
-        Gnuplot gplt;
-        Graph::plotBand(*_eigparser.get(),parser,&gplt,save);
-      }
-      ui->statusBar->clearMessage();
-    }
-    catch (Exception &e)
-    {
-      ui->statusBar->showMessage(QString::fromStdString(e.what()));
-      QMessageBox::critical(this,tr("Error"),QString::fromStdString(e.fullWhat()));
-    }
     this->setCursor(Qt::ArrowCursor);
   }
 }

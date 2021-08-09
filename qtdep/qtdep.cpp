@@ -111,7 +111,6 @@ void qTdep::replotEigparser()
     }
   ConfigParser config;
   config.setContent(" eunit "+_energyUnit.str());
-  Graph::plotBand(*_eigparser.get(),config,ui->plot,Graph::NONE);
 
 }
 
